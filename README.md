@@ -66,15 +66,6 @@ Telegram
 * Docker (opcional)
 * Bot de Telegram
 
-## Instalación
-
-### Clonar repositorio
-
-```bash
-git clone https://github.com/gbenavente/trivy-security-monitoring.git
-cd trivy-security-monitoring
-```
-
 ### Scripts incluidos
 
 * scripts/trivy-scan.sh
@@ -133,8 +124,4 @@ NUEVAS=3
 ├── examples
 └── README.md
 ```
-
-## Licencia
-
-Uso interno y educativo.
 
