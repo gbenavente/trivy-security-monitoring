@@ -1,5 +1,39 @@
 # Trivy Security Monitoring
 
+## Herramientas utilizadas
+
+### Trivy
+
+Trivy es un scanner de seguridad open source desarrollado por Aqua Security que permite detectar vulnerabilidades en:
+
+* Sistemas Linux
+* Imágenes Docker
+* Kubernetes
+* Repositorios Git
+* Archivos de configuración (IaC)
+
+Repositorio oficial:
+
+* [Trivy GitHub Repository](https://github.com/aquasecurity/trivy?utm_source=chatgpt.com)
+
+Documentación oficial:
+
+* [Trivy Documentation](https://trivy.dev/latest/?utm_source=chatgpt.com)
+
+### n8n
+
+Plataforma de automatización utilizada para ejecutar los escaneos y enviar alertas.
+
+* [n8n GitHub Repository](https://github.com/n8n-io/n8n?utm_source=chatgpt.com)
+
+### Telegram Bot API
+
+Utilizada para el envío automático de alertas.
+
+* [Telegram Bot API Documentation](https://core.telegram.org/bots/api?utm_source=chatgpt.com)
+
+
+
 https://wiki.i4cloud.com.ar/es/instructivos/en_proceso/trivy_HTZSVDB007
 
 Sistema de monitoreo y detección de vulnerabilidades utilizando Trivy, n8n y Telegram.
