@@ -1,0 +1,185 @@
+{
+  "name": "Trivy_HTZSVDB007_192.168.10.53 (gb)",
+  "nodes": [
+    {
+      "parameters": {
+        "command": "bash /home/administrator/trivy_script/trivy-scan.sh 2>/tmp/trivy-error.log"
+      },
+      "type": "n8n-nodes-base.ssh",
+      "typeVersion": 1,
+      "position": [
+        288,
+        -48
+      ],
+      "id": "47c99348-6c2c-4c30-927a-9f2f3fa4cde2",
+      "name": "Execute a command",
+      "credentials": {
+        "sshPassword": {
+          "id": "LiXzMEjxvAAWfkSJ",
+          "name": "SSH Password account 10.53"
+        }
+      },
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "chatId": "-5243832532",
+        "text": "={{$json.stdout}}",
+        "additionalFields": {}
+      },
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "position": [
+        592,
+        -48
+      ],
+      "id": "97d02934-71e9-4108-af6d-ebb9a339f637",
+      "name": "Send a text message",
+      "webhookId": "f7622766-0acb-45d9-8622-10497ea42bc5",
+      "credentials": {
+        "telegramApi": {
+          "id": "rSisa6F5Xbs3Gsio",
+          "name": "Telegram_TrivyGm"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "triggerAtHour": 2
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.3,
+      "position": [
+        -16,
+        -272
+      ],
+      "id": "7f75ba8c-4e9c-496d-9b2c-dfa9e07d5e7b",
+      "name": "Schedule Trivy Image Docker"
+    },
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "triggerAtHour": 1
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.3,
+      "position": [
+        -16,
+        -48
+      ],
+      "id": "65757c62-6263-4f98-8040-90a210909958",
+      "name": "Schedule Trigger SO FS"
+    },
+    {
+      "parameters": {
+        "command": "cd /home/administrator/trivy_script && /bin/bash ./trivy-docker-scan.sh"
+      },
+      "type": "n8n-nodes-base.ssh",
+      "typeVersion": 1,
+      "position": [
+        288,
+        -272
+      ],
+      "id": "98931086-c094-4086-9b56-a89071f82b5a",
+      "name": "SSH Docker Trivy",
+      "credentials": {
+        "sshPassword": {
+          "id": "LiXzMEjxvAAWfkSJ",
+          "name": "SSH Password account 10.53"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "chatId": "-5243832532",
+        "text": "={{$node[\"SSH Docker Trivy\"].json[\"stdout\"]}}",
+        "additionalFields": {}
+      },
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "position": [
+        576,
+        -272
+      ],
+      "id": "c5183eb8-f813-47d5-a9ee-7ce7f28a85d2",
+      "name": "Send a text message1",
+      "webhookId": "350036d4-8a71-4020-96fe-9a48b6ecfd8e",
+      "credentials": {
+        "telegramApi": {
+          "id": "rSisa6F5Xbs3Gsio",
+          "name": "Telegram_TrivyGm"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Execute a command": {
+      "main": [
+        [
+          {
+            "node": "Send a text message",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Schedule Trivy Image Docker": {
+      "main": [
+        [
+          {
+            "node": "SSH Docker Trivy",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Schedule Trigger SO FS": {
+      "main": [
+        [
+          {
+            "node": "Execute a command",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "SSH Docker Trivy": {
+      "main": [
+        [
+          {
+            "node": "Send a text message1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": true,
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate"
+  },
+  "versionId": "35c025f6-19fc-4822-9f86-bd1eaf870860",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "fe24adb337e519841773f73cc8f29bc20cf4f9fed31fd776d18c4861469ebfd5"
+  },
+  "id": "YYxDwhKrp6PRxSjW",
+  "tags": []
+}
