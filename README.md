@@ -38,6 +38,8 @@ https://wiki.i4cloud.com.ar/es/instructivos/en_proceso/trivy_HTZSVDB007
 
 Sistema de monitoreo y detección de vulnerabilidades utilizando Trivy, n8n y Telegram.
 
+
+
 ## Objetivo
 
 Automatizar el escaneo de vulnerabilidades en servidores Linux y contenedores Docker, notificando únicamente vulnerabilidades nuevas mediante Telegram.
