@@ -34,11 +34,13 @@ Utilizada para el envío automático de alertas.
 
 
 
-https://wiki.i4cloud.com.ar/es/instructivos/en_proceso/trivy_HTZSVDB007
+
 
 Sistema de monitoreo y detección de vulnerabilidades utilizando Trivy, n8n y Telegram.
 
+## WIKI Interna
 
+https://wiki.i4cloud.com.ar/es/instructivos/en_proceso/trivy_HTZSVDB007
 
 ## Objetivo
 
