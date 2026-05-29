@@ -12,3 +12,25 @@
 
 pkg/
 src/
+
+# Trivy reports
+trivy-reports/
+trivy-docker-reports/
+
+# State files
+trivy-state/
+trivy-docker-state/
+
+# Logs
+*.log
+
+# Temporary
+*.tmp
+*.bak
+
+# SSH keys
+*.pem
+*.key
+
+# Linux
+.DS_Store
